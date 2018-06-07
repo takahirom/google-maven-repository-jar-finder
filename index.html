@@ -22,13 +22,14 @@
 		urlBase = "https://maven.google.com/"+groupPath+"/"+moduleName+"/"+versionName+"/"+moduleName+"-"+versionName
 		
 		source = urlBase+"-sources.jar"
-		runtime = urlBase+".jar"
+		aarRuntime = urlBase+".aar"
+		jarRuntime = urlBase+".jar"
 		pom = urlBase+".pom"
 
 		function link (url) {
 			return "<p><a href="+url+">"+url+"</a></p>"
 		}
-		document.getElementById('result').innerHTML =  link(source)+link(runtime)+link(pom)
+		document.getElementById('result').innerHTML =  link(source)+link(aarRuntime)+link(jarRuntime)+link(pom)
 	}
 	apply()
 	document.getElementById('group').onchange = apply;
