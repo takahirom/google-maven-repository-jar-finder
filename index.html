@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>google maven repository jar finder</title>
+
+</head>
+<body>
+	<form>
+		<input type="text" id="group" value="android.arch.work" />
+		<input type="text" id="module" value="work-runtime-ktx" />
+		<input type="text" id="version" value="1.0.0-alpha02" />
+		<p>url</p>
+		<p id="result"></p>
+	</form>
+
+</body>
+<script>
+	apply = function() {
+		groupPath = document.getElementById('group').value.replace(/\./g,"/");
+		moduleName = document.getElementById('module').value;
+		versionName = document.getElementById('version').value;
+		urlBase = "https://maven.google.com/"+groupPath+"/"+moduleName+"/"+versionName+"/"+moduleName+"-"+versionName
+		
+		source = urlBase+"-sources.jar"
+		runtime = urlBase+".jar"
+		pom = urlBase+".pom"
+
+		function link (url) {
+			return "<p><a href="+url+">"+url+"</a></p>"
+		}
+		document.getElementById('result').innerHTML =  link(source)+link(runtime)+link(pom)
+	}
+	apply()
+	document.getElementById('group').onchange = apply;
+	document.getElementById('module').onchange = apply;
+	document.getElementById('version').onchange = apply;
+</script>
+</html>
